@@ -1,0 +1,29 @@
+﻿<Window x:Class="wmibrowser.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:wmibrowser"
+        mc:Ignorable="d"
+        Title="Noah's Light WMI Browser" Width="800" Height="400">
+    <DockPanel>
+        <Canvas Height="50" DockPanel.Dock="Top" Background="#FF323232">
+            <Label Content="Path" Foreground="White" />
+            <TextBox Name="pathTextbox" Padding="0,0,0,0" Height="20" Width="250" Canvas.Top="25" Canvas.Left="5" Text="\\.\root\cimv2" Background="#FF646464" Foreground="White" BorderBrush="{x:Null}"/>
+            <Button Name="searchButton" Content="Search" Width="80" Canvas.Top="25" Canvas.Left="260" Click="searchButton_Click" Background="#FF646464" Foreground="White" BorderBrush="{x:Null}"/>
+            <Button Name="clearButton" Content="Clear" Width="80" Canvas.Top="25" Canvas.Left="345" Background="#FF646464" Foreground="White" BorderBrush="{x:Null}" Click="clearButton_Click"/>
+        </Canvas>
+        <TextBox Name="searchTextBox" DockPanel.Dock="Top" Height="20" Background="#FF646464" BorderThickness="0" Foreground="White" KeyDown="searchTextBox_KeyDown"/>
+        <TreeView Name="Document" DockPanel.Dock="Bottom" Background="#FF505050" BorderBrush="#FF323232" Foreground="White" VirtualizingPanel.IsVirtualizing="True" MouseDoubleClick="treeView_MouseDoubleClick">
+        </TreeView>
+    </DockPanel>
+    <Window.Resources>
+        <Style TargetType="TreeViewItem">
+            <Style.Triggers>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="Background" Value="#FF969696"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+</Window>
